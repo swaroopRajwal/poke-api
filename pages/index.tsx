@@ -33,8 +33,8 @@ const Home: NextPage = () => {
       <p className='sigmar text-3xl text-center text-cyellow'>Pokemons</p>
       <InfiniteScroll
         pageStart={0}
-        // loadMore={() => fetchNextPage()}
-        loadMore={() => {}}
+        loadMore={() => fetchNextPage()}
+        // loadMore={() => {}}
         hasMore={hasNextPage}
         className="max-w-6xl self-center w-full"
       >
