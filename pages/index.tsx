@@ -1,12 +1,13 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import type { NextPage } from 'next'
-import React from 'react';
+import React, { useState } from 'react';
 import pokeapi from '../lib/pokeapi'
 import InfiniteScroll from 'react-infinite-scroller';
 import Loader from '../components/PokeCad/Loader';
 import PokeCard from '../components/PokeCad';
+import { setgroups } from 'process';
 
-const limit = 100;
+const limit = 50;
 
 const fetchPokemon = async (url: string) => {
   const response = await pokeapi.get(url);

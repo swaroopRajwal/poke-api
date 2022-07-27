@@ -11,7 +11,6 @@ const fetchPokemon = async (id: string) => {
 const Pokemon = () => {
   const { query } = useRouter()
   const id = query.id as string;
-  console.log(id);
 
   const { data, status } = useQuery(
     ["pokemon"],
@@ -20,6 +19,7 @@ const Pokemon = () => {
       enabled: !!id,
     }
   )
+  console.log(data)
 
   if(status == "loading") {
     return <p>Loading....</p>
