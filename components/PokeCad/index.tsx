@@ -1,22 +1,24 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import IdContext from "../../lib/context/IdContext";
 
 interface IProps {
   name: string,
   url: string,
-  skeleton?: boolean,
 }
 
 const PokeCard = (props: IProps) => {
   const [imageNotFound, setImageNotFound] = useState(false);
   const router = useRouter();
+  const { setId } = useContext(IdContext)
 
   const id = props.url.split("/")[6];
   const [imgUrl, setImgUrl] = useState()
 
   const clickHandler = (e:any) => {
     e.preventDefault();
-    router.push(`/pokemon/${id}`)
+    setId(id)
+    router.push(`/pokemon/${id}`);
   }
 
   if (imageNotFound) {
@@ -24,7 +26,7 @@ const PokeCard = (props: IProps) => {
   }
 
   return(
-    <a onClick={clickHandler}>
+    <a onClick={clickHandler} id={id}>
       <div className="poke-card gap-3">
         <div 
           className="jugaad"

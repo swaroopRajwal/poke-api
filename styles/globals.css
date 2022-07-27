@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: 'Poppins', sans-serif;
 }
@@ -22,4 +26,8 @@
 
 .jugaad {
   @apply h-28 w-28 md:h-44 md:w-44;
+}
+
+.title {
+  @apply sigmar text-3xl text-center;
 }
