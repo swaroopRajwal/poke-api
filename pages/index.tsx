@@ -1,12 +1,10 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import type { NextPage } from 'next'
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import pokeapi from '../lib/pokeapi'
 import InfiniteScroll from 'react-infinite-scroller';
 import Loader from '../components/PokeCad/Loader';
 import PokeCard from '../components/PokeCad';
-import { setgroups } from 'process';
-import { useRouter } from 'next/router';
 import IdContext from '../lib/context/IdContext';
 
 const limit = 50;
@@ -17,6 +15,8 @@ const fetchPokemon = async (url: string) => {
 }
 
 const Home: NextPage = () => {
+
+  // ? useInfiniteQuery
   const { data, status, fetchNextPage, hasNextPage } = useInfiniteQuery(
     ["pokemons"], 
     async ({pageParam=`pokemon?limit=${limit}&offset=0`}) => fetchPokemon(pageParam),

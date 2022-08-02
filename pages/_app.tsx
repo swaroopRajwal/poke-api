@@ -13,9 +13,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider
       client={queryClient}
     >
-
       <IdContext.Provider value={{id, setId}}>
-        <div className='min-h-screen bg-black flex flex-col gap-6 p-5 debug-screens'>
+        <div className={`min-h-screen bg-black flex flex-col gap-6 p-5 ${process.env.NODE_ENV === "development" ? 'debug-screens' : ' '}`}>
           <Component {...pageProps} />
         </div>
       </IdContext.Provider>
